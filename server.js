@@ -3,6 +3,7 @@ const hbs = require('hbs');
 const path = require('path');
 const axios = require('axios');
 
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.set('views', path.join(__dirname, "views"));
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 
 app.get('/poster', (req, res) => {
   const title = req.query.title;
+  // API keys from OMDB
   const api_id = process.env.API_ID;
   const api_key = process.env.API_KEY;
   axios.get(`http://omdbapi.com/?i=${api_id}&apikey=${api_key}&t=${title}`)
@@ -29,6 +31,6 @@ app.get('/poster', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 })
