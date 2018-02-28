@@ -27,7 +27,7 @@ app.get('/poster', (req, res) => {
     })
     .catch(error => {
       console.log("Unable to fetch movie data");
-      res.send({error: "Unable to fetch movie data"})
+      res.send({})
     })
 })
 
